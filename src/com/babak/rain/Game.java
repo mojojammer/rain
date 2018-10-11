@@ -10,6 +10,8 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.babak.rain.graphics.Screen;
+
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,9 +26,12 @@ public class Game extends Canvas implements Runnable {
 	private JFrame frame;	
 	private boolean running = false;
 	
+	private Screen screen;
+	
 	public Game() {
 		Dimension size = new Dimension(width*scale, height*scale);
 		setPreferredSize(size);
+		screen = new Screen(width, height);
 		frame = new JFrame();
 	}
 	
