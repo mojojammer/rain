@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable {
 	public static int width = 300;
 	public static int height = width/16*9;
 	public static int scale = 3;
-	
+		
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 	
@@ -52,18 +52,19 @@ public class Game extends Canvas implements Runnable {
 
 	public void run() {
 		long lastTime = System.nanoTime();
-		final double ns = 1000000000.0 / 60; // .0 to ensure double precision
+		final double ns = 1000000000.0 / 60.0; // .0 to ensure double precision
 		double delta = 0;
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
-			while (delta >=1) {
+			while (delta >= 1) {
 				update();
 				delta--;
 			}
 			render();
 		}
+		stop();
 	}
 	
 	public void update() {
