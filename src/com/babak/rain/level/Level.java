@@ -34,8 +34,14 @@ public class Level {
 
 	}
 
-	public void render(int xScroll, int yScroll, Screen screen) {
-
+	public void render(int xScroll, int yScroll, Screen screen) { // xScroll/yScroll is position of the player
+		int x0 = xScroll >> 4;
+		int x1 = (xScroll + screen.width) >> 4; // contrary to how it looks /16 is scaling by tiles not pixels which is
+												// what we want - i.e. setting pins to tiles (e.g. position 32,0 is
+												// pixels, we want 2,0 - the tile) - using tile precision
+												// NOT pixel position
+		int y0 = yScroll >> 4;
+		int y1 = (yScroll + screen.height) >> 4;
 	}
 
 }
