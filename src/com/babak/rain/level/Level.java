@@ -48,8 +48,7 @@ public class Level {
 	public Tile getTile(int x, int y) {
 		if (tiles[x + y * width] == 0)
 			return Tile.grass;
-		return null; // placeholder as we get an error without this as we're only returning a tile if ==0 and eclipse is
-						// catching that we're not returning a tile for all cases
+		return Tile.voidTile;
 	}
 
 }
