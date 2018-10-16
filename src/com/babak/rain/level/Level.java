@@ -1,6 +1,7 @@
 package com.babak.rain.level;
 
 import com.babak.rain.graphics.Screen;
+import com.babak.rain.level.tile.Tile;
 
 public class Level {
 
@@ -42,6 +43,13 @@ public class Level {
 												// NOT pixel position
 		int y0 = yScroll >> 4;
 		int y1 = (yScroll + screen.height) >> 4;
+	}
+
+	public Tile getTile(int x, int y) {
+		if (tiles[x + y * width] == 0)
+			return Tile.grass;
+		return null; // placeholder as we get an error without this as we're only returning a tile if ==0 and eclipse is
+						// catching that we're not returning a tile for all cases
 	}
 
 }
