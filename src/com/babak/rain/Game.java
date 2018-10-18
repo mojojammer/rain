@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 
 import com.babak.rain.graphics.Screen;
 import com.babak.rain.input.Keyboard;
+import com.babak.rain.level.Level;
+import com.babak.rain.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable {
 
@@ -21,15 +23,16 @@ public class Game extends Canvas implements Runnable {
 	public static int scale = 3;
 	public static String title = "Rain";
 
-	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
-
 	private Thread thread;
 	private JFrame frame;
 	private Keyboard key;
+	private Level level;
 	private boolean running = false;
 
 	private Screen screen;
+
+	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
@@ -37,8 +40,9 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(width, height);
 		frame = new JFrame();
-
 		key = new Keyboard();
+		level = new RandomLevel(64, 64);
+
 		addKeyListener(key);
 	}
 
@@ -109,7 +113,7 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		screen.clear();
-		screen.render(x, y);
+		level.render(x, y, screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];

@@ -31,7 +31,7 @@ public class Level {
 
 	}
 
-	private void tim() {
+	private void time() {
 
 	}
 
