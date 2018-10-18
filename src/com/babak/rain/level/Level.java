@@ -20,7 +20,7 @@ public class Level {
 	}
 
 	protected void generateLevel() {
-
+		System.out.println("Tile::generateLevel");
 	}
 
 	private void loadLevel(String path) {
