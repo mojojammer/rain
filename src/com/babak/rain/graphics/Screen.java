@@ -39,8 +39,10 @@ public class Screen {
 			int ya = y + yp; // ya is absolute y position
 			for (int x = 0; x < tile.sprite.SIZE; x++) {
 				int xa = x + xp; // absolute x position
-				if (xa < 0 || xa >= width || ya < 0 || ya >= width)
+				if (xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height)
 					break;
+				if (xa < 0)
+					xa = 0;
 				pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
 			}
 		}
