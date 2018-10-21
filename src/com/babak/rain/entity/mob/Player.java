@@ -1,5 +1,7 @@
 package com.babak.rain.entity.mob;
 
+import com.babak.rain.graphics.Screen;
+import com.babak.rain.graphics.Sprite;
 import com.babak.rain.input.Keyboard;
 
 public class Player extends Mob {
@@ -31,8 +33,8 @@ public class Player extends Mob {
 			move(xa, ya);
 	}
 
-	public void render() {
-
+	public void render(Screen screen) {
+		screen.renderPlayer(x, y, Sprite.player0);
 	}
 
 }
