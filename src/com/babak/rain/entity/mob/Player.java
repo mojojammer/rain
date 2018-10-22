@@ -7,6 +7,7 @@ import com.babak.rain.input.Keyboard;
 public class Player extends Mob {
 
 	private Keyboard input;
+	private Sprite sprite;
 
 	public Player(Keyboard input) {
 		this.input = input;
@@ -16,6 +17,7 @@ public class Player extends Mob {
 		this.x = x;
 		this.y = y;
 		this.input = input;
+		sprite = Sprite.player_forward;
 	}
 
 	public void update() {
@@ -34,7 +36,15 @@ public class Player extends Mob {
 	}
 
 	public void render(Screen screen) {
-		screen.renderPlayer(x - 16, y - 16, Sprite.player);
+		if (dir == 0)
+			sprite = sprite.player_forward;
+		if (dir == 1)
+			sprite = sprite.player_right;
+		if (dir == 2)
+			sprite = sprite.player_back;
+		if (dir == 3)
+			sprite = sprite.player_left;
+		screen.renderPlayer(x - 16, y - 16, sprite);
 	}
 
 }
