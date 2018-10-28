@@ -16,6 +16,7 @@ import com.babak.rain.graphics.Screen;
 import com.babak.rain.input.Keyboard;
 import com.babak.rain.level.Level;
 import com.babak.rain.level.RandomLevel;
+import com.babak.rain.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable {
 
@@ -44,7 +45,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new RandomLevel(64, 64);
+		level = new SpawnLevel("/textures/level.png");
 		player = new Player(key);
 
 		addKeyListener(key);
