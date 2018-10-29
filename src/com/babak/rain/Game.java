@@ -122,7 +122,7 @@ public class Game extends Canvas implements Runnable {
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Verdana", 0, 30));
-		g.drawString("Player-> X: " + player.x + " Y: " + player.y, width * scale / 2, height * scale / 2);
+		// g.drawString("Player-> X: " + player.x + " Y: " + player.y, width * scale / 2, height * scale / 2);
 		g.dispose();
 		bs.show();
 	}
