@@ -1,0 +1,28 @@
+<project name="ant" default="clean" basedir=".">
+
+     <property name="src" location="src"/>
+     <property name="build" location="bin"/>
+     <property name="classpath" location="bin:res"/>
+     <property name="classname" value="com.babak.rain.Game"/>
+
+
+    <target name="clean">
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="${build}"/>
+        <javac srcdir="${src}" destdir="${build}"/>
+    </target>
+
+
+    <target name="run" depends="compile">
+        <java classname="${classname}" fork="true">
+            <classpath>
+                <pathelement path="${classpath}"/>
+            </classpath>
+        </java>
+    </target>
+    <echo message="${classpath}"/>
+
+</project>

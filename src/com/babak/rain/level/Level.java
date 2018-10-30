@@ -5,9 +5,9 @@ import com.babak.rain.level.tile.Tile;
 
 public class Level {
 
-	protected Tile[] tiles;
 	protected int width, height;
 	protected int[] tilesInt;
+	protected int[] tiles;
 
 	public Level(int width, int height) {
 		this.width = width;
@@ -46,24 +46,22 @@ public class Level {
 
 		for (int y = y0; y < y1; y++) {
 			for (int x = x0; x < x1; x++) {
-				// getTile(x, y).render(x, y, screen);
-				if (x + y * 16 < 0 || x + y * 16 >= 256) {
-					Tile.voidTile.render(x, y, screen);
-					continue;
-				}
-				tiles[x + y * 16].render(x, y, screen);
+				getTile(x, y).render(x, y, screen);
 			}
 		}
 	}
 
+	// Grass = 0xff04f520
+	// Flower = 0xffff0505
+	// Rock = 0xffa5a5a5
 	public Tile getTile(int x, int y) {
 		if (x < 0 || y < 0 || x >= width || y >= height)
 			return Tile.voidTile;
-		if (tilesInt[x + y * width] == 0)
+		if (tiles[x + y * width] == 0xff04f520)
 			return Tile.grass;
-		if (tilesInt[x + y * width] == 1)
+		if (tiles[x + y * width] == 0xffa5a5a5)
 			return Tile.rock;
-		if (tilesInt[x + y * width] == 2)
+		if (tiles[x + y * width] == 0xffff0505)
 			return Tile.flower;
 		return Tile.voidTile;
 	}
