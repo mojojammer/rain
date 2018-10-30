@@ -15,7 +15,7 @@ public class Player extends Mob {
 		this.input = input;
 	}
 
-	public Player(int x, int y) {
+	public Player(int x, int y, Keyboard input) {
 		this.x = x;
 		this.y = y;
 		this.input = input;
