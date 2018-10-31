@@ -47,12 +47,12 @@ public class Player extends Mob {
 	public void render(Screen screen) {
 		int flip = 0;
 		if (dir == 0) {
-			sprite = sprite.player_forward;
+			sprite = sprite.player_back;
 			if (walking) {
 				if (anim % 20 > 10)
-					sprite = Sprite.player_forward_1;
+					sprite = Sprite.player_back_1;
 				else
-					sprite = Sprite.player_forward_2;
+					sprite = Sprite.player_back_2;
 			}
 		}
 
@@ -64,15 +64,15 @@ public class Player extends Mob {
 				else
 					sprite = Sprite.player_side_2;
 			}
-			flip = 1;
+			// flip = 1;
 		}
 		if (dir == 2) {
-			sprite = sprite.player_back;
+			sprite = sprite.player_forward;
 			if (walking) {
 				if (anim % 20 > 10)
-					sprite = Sprite.player_back_1;
+					sprite = Sprite.player_forward_1;
 				else
-					sprite = Sprite.player_back_2;
+					sprite = Sprite.player_forward_2;
 			}
 		}
 		if (dir == 3) {
@@ -83,6 +83,7 @@ public class Player extends Mob {
 				else
 					sprite = Sprite.player_side_2;
 			}
+			flip = 1;
 		}
 		screen.renderPlayer(x - 16, y - 16, sprite, flip);
 	}
