@@ -17,6 +17,7 @@ import com.babak.rain.input.Keyboard;
 import com.babak.rain.level.Level;
 import com.babak.rain.level.RandomLevel;
 import com.babak.rain.level.SpawnLevel;
+import com.babak.rain.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 
@@ -47,7 +48,8 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		key = new Keyboard();
 		level = Level.spawn;
-		player = new Player(30, 30, key);
+		TileCoordinate playerSpawn = new TileCoordinate(19, 62);
+		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
 
 		addKeyListener(key);
 	}
