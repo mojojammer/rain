@@ -36,8 +36,14 @@ public abstract class Mob extends Entity {
 
 	private boolean collision(int xa, int ya) {
 		boolean solid = false;
-		if (level.getTile((x + xa) >> 4, (y + ya) >> 4).solid())
-			solid = true;
+
+		for (int c = 0; c < 4; c++) { // c stands for corner - checking all 4 corners
+			int xt = ((x + xa) + c % 2 * 12 - 7) >> 4; // the c%2 or c/2 gives us 0,0/1,0/0,1/1,1 and we use the *a-b
+														// (last part to set the glitch area
+			int yt = ((y + ya) + c / 2 * 12 + 3) >> 4;
+			if (level.getTile(xt, yt).solid())
+				solid = true;
+		}
 		return solid;
 	}
 
