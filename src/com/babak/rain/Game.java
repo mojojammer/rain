@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import com.babak.rain.entity.mob.Player;
 import com.babak.rain.graphics.Screen;
 import com.babak.rain.input.Keyboard;
+import com.babak.rain.input.Mouse;
 import com.babak.rain.level.Level;
 import com.babak.rain.level.RandomLevel;
 import com.babak.rain.level.SpawnLevel;
@@ -53,6 +54,10 @@ public class Game extends Canvas implements Runnable {
 		player.init(level);
 
 		addKeyListener(key);
+
+		Mouse mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 	}
 
 	public synchronized void start() {
@@ -127,6 +132,8 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Verdana", 0, 30));
 		// g.drawString("Player-> X: " + player.x + " Y: " + player.y, width * scale / 2, height * scale / 2);
+		g.fillRect(Mouse.getX() - 16, Mouse.getY() - 16, 32, 32);
+		g.drawString("Button: " + Mouse.getButton(), 40, 40);
 		g.dispose();
 		bs.show();
 	}
