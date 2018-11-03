@@ -34,12 +34,18 @@ public abstract class Mob extends Entity {
 	public void update() {
 	}
 
+	protected void shoot(int x, int y, double dir) {
+		System.out.println("Angle: " + dir);
+	}
+
 	private boolean collision(int xa, int ya) {
 		boolean solid = false;
 
 		for (int c = 0; c < 4; c++) { // c stands for corner - checking all 4 corners
-			int xt = ((x + xa) + c % 2 * 14 - 8) >> 4; // the c%2 or c/2 gives us 0,0/1,0/0,1/1,1 and we use the +(*a)-b
-														// (last part) to set the glitch area
+			// the c%2 or c/2 gives us 0,0/1,0/0,1/1,1 and we use the +(*a)-b (last part) to set the glitch area
+			//int xt = ((x + xa) + c % 2 * 32 - 16) >> 4; // This gives us the sprite box (remember it's centred at -16,-16
+			//int yt = ((y + ya) + c / 2 * 32 - 16) >> 4; // and the pink surround is not drawn(!)
+			int xt = ((x + xa) + c % 2 * 14 - 8) >> 4;
 			int yt = ((y + ya) + c / 2 * 12 + 3) >> 4;
 			if (level.getTile(xt, yt).solid())
 				solid = true;
