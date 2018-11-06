@@ -116,6 +116,7 @@ public class Game extends Canvas implements Runnable {
 	public void update() {
 		key.update();
 		player.update();
+		level.update();
 	}
 
 	public void render() {
@@ -139,9 +140,10 @@ public class Game extends Canvas implements Runnable {
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Verdana", 0, 30));
-		//		g.drawString("Player-> X: " + player.x + " Y: " + player.y, width * scale / 2, height * scale / 2);
-		//		g.fillRect(Mouse.getX() - 16, Mouse.getY() - 16, 32, 32);
-		//		g.drawString("Button: " + Mouse.getButton(), 40, 40);
+		// g.drawString("Player-> X: " + player.x + " Y: " + player.y, width *
+		// scale / 2, height * scale / 2);
+		// g.fillRect(Mouse.getX() - 16, Mouse.getY() - 16, 32, 32);
+		// g.drawString("Button: " + Mouse.getButton(), 40, 40);
 		g.dispose();
 		bs.show();
 	}
@@ -150,7 +152,9 @@ public class Game extends Canvas implements Runnable {
 		Game game = new Game();
 		game.frame.setResizable(false);
 		game.frame.setTitle(Game.title);
-		game.frame.add(game); // game is a subclass of Canvas which is a subclass of Component - we're adding this to our JFrame
+		game.frame.add(game); // game is a subclass of Canvas which is a
+								// subclass of Component - we're adding this to
+								// our JFrame
 		game.frame.pack();
 		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.frame.setLocationRelativeTo(null);
