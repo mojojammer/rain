@@ -1,10 +1,12 @@
 package com.babak.rain.graphics;
 
 public class Sprite {
-	public final int SIZE;
+
 	private int x, y;
-	public int[] pixels;
 	private SpriteSheet sheet;
+
+	public final int SIZE;
+	public int[] pixels;
 
 	public static Sprite grass = new Sprite(16, 0, 5, SpriteSheet.tiles);
 	public static Sprite flower = new Sprite(16, 1, 0, SpriteSheet.tiles);

@@ -1,6 +1,7 @@
 package com.babak.rain.entity.mob;
 
 import com.babak.rain.Game;
+import com.babak.rain.entity.projectile.Projectile;
 import com.babak.rain.graphics.Screen;
 import com.babak.rain.graphics.Sprite;
 import com.babak.rain.input.Keyboard;
@@ -44,7 +45,17 @@ public class Player extends Mob {
 		} else
 			walking = false;
 
+		clear();
 		updateShooting();
+	}
+
+	private void clear() {
+		for (int i = 0; i < projectiles.size(); i++) {
+			Projectile p = projectiles.get(i);
+			if (p.isRemoved())
+				projectiles.remove(i);
+		}
+
 	}
 
 	private void updateShooting() {
