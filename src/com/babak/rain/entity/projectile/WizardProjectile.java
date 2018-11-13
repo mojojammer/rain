@@ -5,12 +5,13 @@ import com.babak.rain.graphics.Sprite;
 
 public class WizardProjectile extends Projectile {
 
+    public static final int FIRE_RATE = 15; // Higher number fires slower(?)! 
+
 	public WizardProjectile(int x, int y, double dir) {
 		super(x, y, dir);
 		range = 80;
 		speed = 4;
 		damage = 20;
-		rateOfFire = 15;
 		sprite = Sprite.projectile_wizard;
 
 		nx = speed * Math.cos(angle);
