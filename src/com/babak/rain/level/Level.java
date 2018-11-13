@@ -6,6 +6,7 @@ import java.util.List;
 import com.babak.rain.entity.Entity;
 import com.babak.rain.graphics.Screen;
 import com.babak.rain.level.tile.Tile;
+import com.babak.rain.entity.projectile.Projectile;
 
 public class Level {
 
@@ -15,6 +16,7 @@ public class Level {
 	protected int tile_size;
 
 	private List<Entity> entities = new ArrayList<Entity>();
+	public List<Projectile> projectiles = new ArrayList<Projectile>();
 
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
@@ -40,7 +42,14 @@ public class Level {
 	public void update() {
 		for (int i = 0; i < entities.size(); i++)
 			entities.get(i).update();
+
+		for (int i = 0; i < projectiles.size(); i++)
+			projectiles.get(i).update();
 	}
+
+    public List<Projectile> getProjectiles() {
+        return projectiles;
+    }
 
 	private void time() {
 	}
@@ -66,10 +75,18 @@ public class Level {
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).render(screen);
 		}
+
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).render(screen);
+		}
 	}
 
 	public void add(Entity e) {
 		entities.add(e);
+	}
+
+	public void addProjectile(Projectile p) {
+		projectiles.add(p);
 	}
 
 	// Grass = 0xff04f520

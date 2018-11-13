@@ -14,10 +14,8 @@ public abstract class Mob extends Entity {
 	protected int dir = 2; // 0=north, 1=east, 2=south 3=east
 	protected boolean moving = false;
 
-	protected List<Projectile> projectiles = new ArrayList<Projectile>();
-
 	public void move(int xa, int ya) {
-		System.out.println("Size: " + projectiles.size());
+		System.out.println("Size: " + level.getProjectiles().size());
 		if (xa != 0 && ya != 0) {
 			move(xa, 0);
 			move(0, ya);
@@ -45,8 +43,7 @@ public abstract class Mob extends Entity {
 	protected void shoot(int x, int y, double dir) {
 		// dir *= 180 / Math.PI;
 		Projectile p = new WizardProjectile(x, y, dir);
-		projectiles.add(p);
-		level.add(p);
+		level.addProjectile(p);
 
 	}
 
@@ -56,10 +53,10 @@ public abstract class Mob extends Entity {
 		for (int c = 0; c < 4; c++) { // c stands for corner - checking all 4
 										// corners
 			// the c%2 or c/2 gives us 0,0/1,0/0,1/1,1 and we use the +(*a)-b
-			// (last part) to set the glitch area
-			// int xt = ((x + xa) + c % 2 * 32 - 16) >> 4; // This gives us the
-			// sprite box (remember it's centred at -16,-16
-			// int yt = ((y + ya) + c / 2 * 32 - 16) >> 4; // and the pink
+			// (last part) to set the glitch area int xt = ((x + xa) + c % 2 *
+			// 32 - 16) >> 4;This gives us the
+			// sprite box (remember it's centred at -16,-16 int yt = ((y + ya) +
+			// c / 2 * 32 - 16) >> 4; and the pink
 			// surround is not drawn(!)
 			int xt = ((x + xa) + c % 2 * 14 - 8) >> 4;
 			int yt = ((y + ya) + c / 2 * 12 + 3) >> 4;

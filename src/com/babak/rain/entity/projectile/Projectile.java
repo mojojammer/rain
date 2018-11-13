@@ -1,5 +1,7 @@
 package com.babak.rain.entity.projectile;
 
+import java.util.Random;
+
 import com.babak.rain.entity.Entity;
 import com.babak.rain.graphics.Sprite;
 
@@ -11,6 +13,7 @@ public abstract class Projectile extends Entity {
 	protected double x, y;
 	protected double nx, ny;
 	protected double speed, rateOfFire, range, damage, distance;
+	protected final Random random = new Random();
 
 	public Projectile(int x, int y, double dir) {
 		xOrigin = x;
