@@ -9,7 +9,7 @@ public class WizardProjectile extends Projectile {
 
 	public WizardProjectile(int x, int y, double dir) {
 		super(x, y, dir);
-		range = 80;
+		range = 200;
 		speed = 4;
 		damage = 20;
 		sprite = Sprite.projectile_wizard;
@@ -19,12 +19,14 @@ public class WizardProjectile extends Projectile {
 	}
 
 	public void update() {
+        if (level.tileCollision(x, y, nx, ny, 7))
+            remove();
 		move();
 	}
 
 	protected void move() {
-		x += nx;
-		y += ny;
+	    x += nx;
+    	y += ny;
 		if (distance() > range)
 			remove();
 	}
