@@ -2,6 +2,7 @@ package com.babak.rain.entity.projectile;
 
 import com.babak.rain.graphics.Screen;
 import com.babak.rain.graphics.Sprite;
+import com.babak.rain.entity.particle.Particle;
 
 public class WizardProjectile extends Projectile {
 
@@ -19,8 +20,11 @@ public class WizardProjectile extends Projectile {
     }
 
     public void update() {
-        if (level.tileCollision(x, y, nx, ny, 7))
+        if (level.tileCollision(x, y, nx, ny, 7)) {
+            Particle p = new Particle((int)x, (int)y, 50, 50);
+            level.add(p);
             remove();
+        }
         move();
     }
 
